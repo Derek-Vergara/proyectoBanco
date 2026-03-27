@@ -3,32 +3,55 @@
 //class AccountTest creates an Account object
 //calls its getName and setName method 
 
+import java.util.Scanner; //program uses class Scanner
 
-import java.util.Scanner; // program uses Scanner
+public class AccountTest 
+{
 
-public class AccountTest {
+    public static void main (String[] args)
+    {
 
-    public static void main (String[] args){
+        Account account1 = new Account("Rachel Green",500.00);
+        Account account2 = new Account("Monica Geller",1000.00);
 
-        //create an Scanner object to obtain input from command window
-        Scanner sc = new Scanner (System.in);
+        System.out.printf("%s balance: $%.2f%n", 
+        account1.getName(), account1.getBalance());
 
-        //create an Account object and assign it to myAccount
-        Account myAccount = new Account();
+        System.out.printf("%s balance: $%.2f%n%n", 
+        account2.getName(), account2.getBalance());
 
-        //display initial value of name (null)
-        System.out.printf("Initial name is: %s%n%n", myAccount.getName());
+            //create Scanner to obtain input from command window
+        Scanner sc = new Scanner(System.in);
 
-        //prompt for and read name
-        System.out.println("Please enter the name: ");
-        String theName = sc.nextLine(); //read a line of text
-        myAccount.setName(theName); //put theName in myAccount
-        System.out.println();
+        System.out.print("Enter deposit amount for account 1: ");
+        double depositAmount = sc.nextDouble();
 
-        //display the name stored in myAccount
-        System.out.printf("Name in object myAccount is: %n%s%n", myAccount.getName());
+        System.out.printf("%nadding %.2f to account1 balance%n%n",
+         depositAmount);
+
+        account1.deposit(depositAmount);
+
+        //display balances
+        System.out.printf("%s balance: $%.2f%n",
+         account1.getName(), account1.getBalance());
+
+        System.out.printf("%s balance: $%.2f%n%n", 
+        account2.getName(), account2.getBalance());
+
+        System.out.print ("Enter deposit amount for account 2: ");
+        depositAmount = sc.nextDouble();
+        System.out.printf(" %nadding %.2f to account2 balance%n%n",
+            depositAmount);
+
+        account2.deposit(depositAmount);
+
+        //display balances
+        System.out.printf("%s balance: $%.2f%n",
+        account1.getName(), account1.getBalance());
+        System.out.printf("%s balance: $%.2f%n",
+        account2.getName(), account2.getBalance());
+
         
-    
     }//End of main method
 
 }//End of class AccountTest
